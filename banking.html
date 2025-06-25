@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <style>
+    body {
+      background: #f4f7fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      /* Removed flex centering and 100vh to allow scrolling */
+    }
+    .form-container {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      max-width: 400px;
+      width: 100%;
+      margin: 40px auto; /* Center horizontally and add vertical space */
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: 500;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="email"]:focus {
+      border-color: #4f8cff;
+      outline: none;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(90deg, #4f8cff, #38b6ff);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #38b6ff, #4f8cff);
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form action="https://n8n.aipencil.ai/webhook/form" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+
+      <label for="phone">Phone number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn, vd: 0912xxxxx" pattern="\d{10}" maxlength="10" minlength="10" required>
+`
+      <label for="govid">CCCD</label>
+      <input type="text" id="govid" name="govid" placeholder="Nhập căn cước công dân của bạn" required pattern="\d{12}" maxlength="12" minlength="12" title="Please enter exactly 12 digits">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Nhập email của bạn" name="email" required>
+
+      <label for="package">Choose Your Package</label>
+      <select id="package" name="package" required style="width:100%;padding:0.7rem;margin-bottom:1.2rem;border:1px solid #d1d5db;border-radius:6px;font-size:1rem;background:linear-gradient(90deg,#e3f0ff,#f9f9ff);color:#333;appearance:none;box-shadow:0 2px 8px rgba(79,140,255,0.07);">
+        <option value="" disabled selected hidden>✨ Select a package ✨</option>
+        <option value="GOIBASIC" data-label="🌱 GOIBASIC — Starter">🌱 GOIBASIC &mdash; Starter</option>
+        <option value="GOIPLUS" data-label="🚀 GOIPLUS — Plus">🚀 GOIPLUS &mdash; Plus</option>
+        <option value="GOIPRO" data-label="💼 GOIPRO — Pro">💼 GOIPRO &mdash; Pro</option>
+        <option value="GOISILVER" data-label="🥈 GOISILVER — Silver">🥈 GOISILVER &mdash; Silver</option>
+        <option value="GOIGOLD" data-label="🥇 GOIGOLD — Gold">🥇 GOIGOLD &mdash; Gold</option>
+        <option value="GOIPLATINUM" data-label="🏆 GOIPLATINUM — Platinum">🏆 GOIPLATINUM &mdash; Platinum</option>
+      </select>
+      <input id="_package" type="hidden" name="package"/>
+      <input type="hidden" id="package_cost" name="package_cost">
+      <input type="hidden" id="package_label" name="package_label">
+      <!-- Attractive payment QR image, initially hidden -->
+      <input type="hidden" id="secret_key" name="secret_key">
+      <div id="payment-section" style="display:none; text-align:center; margin-bottom:1.2rem;">
+        <p style="font-weight:500; color:#4f8cff; margin-bottom:0.5rem;">Scan to Pay Instantly</p>
+        <img id="payment-qr" src="" alt="Payment QR Code" style="width:180px; height:180px; border-radius:16px; box-shadow:0 4px 16px rgba(56,182,255,0.13); border:3px solid #e3f0ff; background:#fff;"/>
+        <div style="margin-top:0.5rem; color:#888; font-size:0.95rem;">Use your banking app to scan</div>
+      </div>
+      <!-- Hidden secret key field -->
+      <input type="submit" value="Submit" >
+      <input type="submit" value="Re-Submit" hidden="true">
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+     // Get the 'plan' parameter from the URL
+     // Get the 'plan' parameter from the URL
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get('plan');
+      if (plan) {
+        const select = document.getElementById('package');
+        const _package = document.getElementById('_package')
+        if (select) {
+          select.value = plan;
+          select.disabled = true; // Make the select fixed and unchangeable
+          _package.value = plan
+        }
+      }
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Simple validation
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const govid = document.getElementById('govid').value.trim();
+
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const phoneValid = /^0\d{9}$/.test(phone);
+        const govidValid = /^\d{12}$/.test(govid);
+
+        if (!emailValid) {
+          alert('Vui lòng nhập đúng định dạng của email!');
+          document.getElementById('email').focus();
+          return;
+        }
+        else if (!phoneValid) {
+          alert('Số điện thoại phải là 10 số và bắt đầu là 0');
+          document.getElementById('phone').focus();
+          return;
+        }
+        else if (!govidValid) {
+          alert('Vui lòng nhập đúng định dạng của CCCD!');
+          document.getElementById('govid').focus();
+          return;
+        }
+
+        const link = createLink();
+        document.getElementById('payment-qr').src = link;
+        document.getElementById('payment-section').style.display = 'block';
+        document.getElementById('payment-section').scrollIntoView({behavior: 'smooth'});
+
+        const formData = new FormData(event.target);
+        axios.post(event.target.action, formData)
+          .then(response => {
+        console.log('Form submitted:', response.data);
+          })
+          .catch(error => {
+        console.error('Submission error:', error);
+          });
+      });
+      function createLink() {
+        const choice = document.getElementById('package');
+        const pkg_msg = generateAlphanumericKey();
+        document.getElementById('secret_key').value = pkg_msg
+        let cost = 0;
+        switch (choice.value) {
+          case "GOIBASIC":
+            cost = 99999;
+            break;
+          case "GOIPLUS":
+            cost = 180000;
+            break;
+          case "GOIPRO":
+            cost = 249000;
+            break;
+          case "GOISILVER":
+            cost = 668000;
+            break;
+          case "GOIGOLD":
+            cost = 799000;
+            break;
+          default:
+            cost = 999000;
+        }
+        return `https://qr.sepay.vn/img?acc=0961382006&bank=VPBANK&amount=${cost}&des=${pkg_msg}`;
+      }
+
+    // Generate an 8-character random alphanumeric string (A-Z, a-z, 0-9)
+      function generateAlphanumericKey(length = 8) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        const array = new Uint8Array(length);
+        window.crypto.getRandomValues(array);
+        for (let i = 0; i < length; i++) {
+          result += chars[array[i] % chars.length];
+        }
+        return result;
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HostingGuard - Cloud Server Solutions</title>
+  <!-- Import Tailwind CSS từ CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans text-gray-800 antialiased">
+  <!-- Header -->
+  <header class="bg-blue-600 py-4 text-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4">
+      <div class="flex items-center gap-8 px-20 text-2xl font-bold">
+        <span>HostingGuard</span>
+      </div>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#" class="hover:text-gray-300">Trang chủ</a></li>
+          <li><a href="#" class="hover:text-gray-300">Tính năng</a></li>
+          <li><a href="#" class="hover:text-gray-300">Bảng giá</a></li>
+          <li><a href="#" class="hover:text-gray-300">Về chúng tôi</a></li>
+          <li><a href="#" class="hover:text-gray-300">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <a href="#"
+        class="btn-animated flex items-center gap-2 rounded bg-green-400 px-4 py-2 font-semibold text-blue-900 transition hover:bg-green-500">Bắt
+        đầu ngay
+        <span class="arrow inline-block transition-transform">→</span></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 p-20 py-20 text-white">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-4 md:flex-row">
+      <!-- Left: Text -->
+      <div class="z-10 flex flex-1 flex-col items-start justify-center">
+        <span class="mb-4 inline-block rounded-full bg-green-500/20 px-4 py-1 text-sm text-green-200">Hosting WordPress
+          Giảm đến 75%</span>
+        <h1 class="animate-hero-title mb-4 text-left text-4xl font-bold leading-tight md:text-6xl">
+          Giải pháp <br /><span class="shadwo text-5xl text-green-300 md:text-7xl">Cloud Server</span><br />Nhanh &amp;
+          An Toàn
+        </h1>
+        <p class="animate-hero-title mb-8 max-w-xl text-left text-lg md:text-2xl">
+          Trải nghiệm cách mới để xây dựng, triển khai và quản lý WordPress
+          hiệu quả trên một bảng điều khiển mạnh mẽ.
+        </p>
+        <div class="animate-hero-btns flex gap-4">
+          <a href="#"
+            class="btn-animated flex items-center gap-2 rounded-full bg-green-400 px-6 py-3 font-semibold text-blue-900 shadow-lg transition hover:bg-green-500">
+            Bắt đầu ngay
+            <span class="arrow inline-block transition-transform">→</span>
+          </a>
+          <a href="#plans"
+            class="btn-animated flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20">
+            Xem tất cả gói
+            <span class="arrow inline-block transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+      <!-- Right: Image -->
+      <div class="relative mt-10 flex flex-1 items-center justify-center md:mt-0">
+        <div class="relative flex h-[350px] w-[350px] items-center justify-center md:h-[420px] md:w-[420px]">
+          <img src="anh_landing_page.jpg" alt="Hình ảnh landing page"
+            class="animate-img-fadein z-10 h-full w-full rounded-[50%_50%_50%_50%/60%_60%_40%_40%] border-4 border-white/10 object-cover shadow-2xl"
+            style="aspect-ratio: 1/1" />
+          <div
+            class="pointer-events-none absolute inset-0 rounded-[50%_50%_50%_50%/60%_60%_40%_40%] ring-4 ring-blue-400/30">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 right-0 top-0 z-0 hidden w-1/2 md:block">
+      <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="400" cy="300" rx="300" ry="250" fill="#2563eb" fill-opacity="0.25" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Plan Cards (Server Section) -->
+  <section id="plans" class="bg-gray-100 py-16">
+    <div class="mx-auto flex max-w-6xl flex-col items-start gap-8 px-4 md:flex-row">
+      <div class="flex-1">
+        <h2 class="my-10 text-center text-6xl font-bold md:text-6xl">
+          100% <span class="text-green-600  animate-plan-green-gradient">Máy chủ xanh <br /></span> phù hợp
+          cho bạn
+        </h2>
+        <div class="animate-plan-list space-y-4" id="plan-list">
+          <!-- Starter -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="1">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">+</span>
+                <span class="plan-title text-3xl font-bold">Basic</span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">1 core CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">2 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">30 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">60.000đ/tuần<br><span class="text-2xl">210.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOIBASIC'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class="col-span-2"><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • N8n cài sẵn, chỉ việc đăng nhập và sử dụng<br>
+                    • PostgreSQL thay thế SQLite<br>
+                    • 100+ mẫu tự động hóa<br>
+                    • Công cụ hỗ trợ như Milvus, Attu, Redis<br>
+                    • Hỗ trợ khách hàng 24/7
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pro (Best Choice) -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="2">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">★</span>
+                <span class="plan-title text-3xl font-bold">Plus <span class="text-yellow-500 text-base font-bold">(Best Choice)</span></span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">2 cores CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">4 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">50 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">125.000đ/tuần<br><span class="text-2xl">440.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOIPLUS'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class=""><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • Tối ưu cho doanh nghiệp nhỏ<br>
+                    • Giao diện dễ sử dụng<br>
+                    • Công cụ tích hợp giúp tối ưu hóa quy trình<br>
+                    • Hỗ trợ ưu tiên 24/7
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           <!-- Pro -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="1">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">+</span>
+                <span class="plan-title text-3xl font-bold">Pro</span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">1 core CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">2 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">30 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">60.000đ/tuần<br><span class="text-2xl">210.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOIPRO'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class="col-span-2"><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • N8n cài sẵn, chỉ việc đăng nhập và sử dụng<br>
+                    • PostgreSQL thay thế SQLite<br>
+                    • 100+ mẫu tự động hóa<br>
+                    • Công cụ hỗ trợ như Milvus, Attu, Redis<br>
+                    • Hỗ trợ khách hàng 24/7
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Business -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="3">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">+</span>
+                <span class="plan-title text-3xl font-bold">Silver</span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">4 cores CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">8 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">100 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">200.000đ/tuần<br><span class="text-2xl">700.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOISILVER'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class="col-span-2"><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • Giải pháp cho doanh nghiệp phát triển<br>
+                    • Xử lý dữ liệu lớn mượt mà<br>
+                    • 100+ mẫu tự động hóa<br>
+                    • Bảo mật cao, sao lưu tự động
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Advanced -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="4">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">+</span>
+                <span class="plan-title text-3xl font-bold">Gold</span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">6 cores CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">16 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">150 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">320.000đ/tuần<br><span class="text-2xl">1.150.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOIGOLD'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class="col-span-2"><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • Dành cho ứng dụng yêu cầu tài nguyên cao<br>
+                    • Hiệu suất tối đa cho công việc chuyên sâu<br>
+                    • Công nghệ tự động hóa, tích hợp hiện đại<br>
+                    • Hỗ trợ kỹ thuật 24/7
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Ultimate -->
+          <div class="plan-card plan-fadein flex cursor-pointer flex-col rounded-lg bg-white shadow" data-plan="5">
+            <div class="flex flex-col items-center justify-between px-6 py-4 md:flex-row">
+              <div class="flex w-full min-w-[160px] items-center md:w-auto">
+                <span class="toggle-icon mr-3 text-2xl">+</span>
+                <span class="plan-title text-3xl font-bold">Platinum</span>
+              </div>
+              <div class="mt-2 flex w-full flex-1 items-center justify-between gap-6 md:mt-0 md:w-auto md:justify-end md:gap-10">
+                <span class="font-semibold text-xl">8 cores CPU</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">32 GB</span> RAM</span>
+                <span class="font-semibold text-xl"><span class="font-semibold">200 GB</span> NVMe</span>
+                <span class="font-bold text-blue-600 text-xl">480.000đ/tuần<br><span class="text-2xl">1.680.000đ/tháng</span></span>
+                <button onclick="window.location.href='banking.html?plan=GOIPLATINUM'" class="btn-animated flex items-center gap-2 rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700">
+                  Đặt mua
+                  <span class="arrow inline-block transition-transform">→</span>
+                </button>
+              </div>
+            </div>
+            <div class="plan-detail px-6 pb-4">
+              <div class="flex flex-col gap-4 rounded-lg border border-dashed p-4 md:flex-row bg-gray-200">
+                <div class="plan-detail-content grid flex-1 grid-cols-3 gap-2 text-xl mx-4 my-2 bg-gray-200">
+                  <div><span class="font-bold text-blue-600">Băng thông:</span> Unlimited</div>
+                  <div><span class="font-bold text-blue-600">Sao lưu:</span> Mỗi 3 ngày</div>
+                  <div class="col-span-2"><span class="font-bold text-blue-600">Tính năng nổi bật:</span><br>
+                    • Giải pháp tối ưu cho dự án lớn<br>
+                    • Hiệu suất vượt trội, khả năng mở rộng linh hoạt<br>
+                    • Công cụ tự động hóa và quản trị hiện đại<br>
+                    • Chăm sóc khách hàng 24/7
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-500">
+          Cần hỗ trợ? Xem
+          <a href="#" class="text-blue-600 underline">So sánh đầy đủ các gói</a>
+          hoặc
+          <a href="#" class="text-green-600 underline">Liên hệ chuyên gia Hosting</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-10 text-white">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex flex-wrap justify-between">
+        <div class="mb-6 w-full sm:w-auto">
+          <h3 class="mb-2 font-bold">Sản phẩm &amp; Giải pháp</h3>
+          <ul>
+            <li><a href="#" class="hover:text-gray-300">Cloud Server</a></li>
+            <li><a href="#" class="hover:text-gray-300">Máy chủ riêng</a></li>
+            <li><a href="#" class="hover:text-gray-300">VPS</a></li>
+          </ul>
+        </div>
+        <div class="mb-6 w-full sm:w-auto">
+          <h3 class="mb-2 font-bold">Thông tin công ty</h3>
+          <ul>
+            <li><a href="#" class="hover:text-gray-300">Về chúng tôi</a></li>
+            <li><a href="#" class="hover:text-gray-300">Tuyển dụng</a></li>
+            <li><a href="#" class="hover:text-gray-300">Tin tức</a></li>
+          </ul>
+        </div>
+        <div class="mb-6 w-full sm:w-auto">
+          <h3 class="mb-2 font-bold">Hỗ trợ &amp; Dịch vụ</h3>
+          <ul>
+            <li>
+              <a href="#" class="hover:text-gray-300">Câu hỏi thường gặp</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-gray-300">Tài liệu hướng dẫn</a>
+            </li>
+            <li><a href="#" class="hover:text-gray-300">Cộng đồng</a></li>
+          </ul>
+        </div>
+        <div class="w-full sm:w-auto">
+          <h3 class="mb-2 font-bold">Kết nối với chúng tôi</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-gray-300">Facebook</a>
+            <a href="#" class="hover:text-gray-300">Twitter</a>
+            <a href="#" class="hover:text-gray-300">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-700 pt-4 text-center text-sm">
+        &copy; 2025 HostingGuard. Đã đăng ký bản quyền.
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+<style>
+  .btn-animated .arrow {
+    transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+    display: inline-block;
+  }
+
+  .btn-animated:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .btn-animated {
+    transition:
+      box-shadow 0.2s,  
+      background 0.2s,
+      color 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  .btn-animated:hover {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .plan-detail {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.5s cubic-bezier(0.4, 2, 0.6, 1),
+      opacity 0.4s;
+  }
+
+  .plan-card .plan-detail.open {
+    max-height: 500px;
+    opacity: 1;
+    transition:
+      max-height 0.7s cubic-bezier(0.4, 2, 0.6, 1),
+      opacity 0.5s;
+  }
+
+  .plan-detail.plan-animate-open,
+  .plan-card.plan-animate-card-open {
+    animation: planOpenAnim 0.5s cubic-bezier(0.4, 2, 0.6, 1);
+  }
+
+  .plan-detail.plan-animate-close,
+  .plan-card.plan-animate-card-close {
+    animation: planCloseAnim 0.4s cubic-bezier(0.4, 2, 0.6, 1);
+  }
+
+  @keyframes planOpenAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scaleY(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes planCloseAnim {
+    0% {
+      opacity: 1;
+      transform: none;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(30px) scaleY(0.95);
+    }
+  }
+
+  .plan-fadein {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: planFadeIn 0.8s cubic-bezier(0.4, 2, 0.6, 1) forwards;
+  }
+
+  .plan-fadein:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .plan-fadein:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .plan-fadein:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .plan-fadein:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .plan-fadein:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes planFadeIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-img-fadein {
+    opacity: 0;
+    animation: imgFadeIn 1.2s 0.5s cubic-bezier(0.4, 2, 0.6, 1) forwards;
+  }
+
+  @keyframes imgFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .rounded-oval {
+    border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+  }
+
+  .animate-hero-title {
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: heroTitleIn 0.9s 0.1s cubic-bezier(0.4, 2, 0.6, 1) forwards;
+  }
+
+  @keyframes heroTitleIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-hero-btns {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: heroBtnsIn 0.8s 0.5s cubic-bezier(0.4, 2, 0.6, 1) forwards;
+  }
+
+  @keyframes heroBtnsIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Card color levels */
+  .plan-card[data-plan="1"] {
+    border-top-width: 6px;
+    border-top-color: #22c55e;
+    box-shadow: 0 4px 24px 0 #22c55e22;
+  }
+
+  .plan-card[data-plan="2"] {
+    border-top-width: 6px;
+    border-top-color: #fde047;
+    box-shadow: 0 4px 24px 0 #fde04722;
+  }
+
+  .plan-card[data-plan="3"] {
+    border-top-width: 6px;
+    border-top-color: #fb923c;
+    box-shadow: 0 4px 24px 0 #fb923c22;
+  }
+
+  .plan-card[data-plan="4"] {
+    border-top-width: 6px;
+    border-top-color: #ef4444;
+    box-shadow: 0 4px 24px 0 #ef444422;
+  }
+
+  .plan-card[data-plan="5"] {
+    border-top-width: 6px;
+    border-top-color: #a855f7;
+    box-shadow: 0 4px 24px 0 #a855f722;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+    background-size: 300% 100%;
+  }
+
+  @keyframes gradientTextMove {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  .plan-card[data-plan="1"] .plan-title,
+  .plan-card[data-plan="2"] .plan-title,
+  .plan-card[data-plan="3"] .plan-title,
+  .plan-card[data-plan="4"] .plan-title,
+  .plan-card[data-plan="5"] .plan-title {
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: gradientTextMove 3s linear infinite;
+    background-size: 200% 100%;
+    background-repeat: repeat;
+    display: inline-block;
+    min-width: 120px;
+    filter: drop-shadow(2 8px 6px rgba(0, 0, 0, 0.10));
+    will-change: background-position;
+  }
+
+  .plan-card[data-plan="1"] .plan-title {
+    background: linear-gradient(to right, #16a34a, #22c55e, #4ade80);
+  }
+
+  .plan-card[data-plan="2"] .plan-title {
+    background: linear-gradient(to right, #facc15, #fde047, #fef08a);
+  }
+
+  .plan-card[data-plan="3"] .plan-title {
+    background: linear-gradient(to right, #f97316, #fb923c, #fdba74);
+  }
+
+  .plan-card[data-plan="4"] .plan-title {
+    background: linear-gradient(to right, #dc2626, #ef4444, #f87171);
+  }
+
+  .plan-card[data-plan="5"] .plan-title {
+    background: linear-gradient(to right, #9333ea, #a855f7, #c084fc);
+  }
+
+  .plan-card[data-plan="1"] {
+    border-top-width: 6px;
+    border-top-style: solid;
+    border-image: linear-gradient(to right, #16a34a, #22c55e, #4ade80) 1;
+  }
+
+  .plan-card[data-plan="2"] {
+    border-top-width: 6px;
+    border-top-style: solid;
+    border-image: linear-gradient(to right, #facc15, #fde047, #fef08a) 1;
+  }
+
+  .plan-card[data-plan="3"] {
+    border-top-width: 6px;
+    border-top-style: solid;
+    border-image: linear-gradient(to right, #f97316, #fb923c, #fdba74) 1;
+  }
+
+  .plan-card[data-plan="4"] {
+    border-top-width: 6px;
+    border-top-style: solid;
+    border-image: linear-gradient(to right, #dc2626, #ef4444, #f87171) 1;
+  }
+
+  .plan-card[data-plan="5"] {
+    border-top-width: 6px;
+    border-top-style: solid;
+    border-image: linear-gradient(to right, #9333ea, #a855f7, #c084fc) 1;
+  }
+
+  @keyframes gradientTextMove {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  .animate-plan-green-gradient {
+    background: linear-gradient(to right, #16a34a, #22c55e, #4ade80);
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: gradientTextMove 3s linear infinite;
+    background-size: 200% 100%;
+    background-repeat: repeat;
+    display: inline-block;
+    will-change: background-position;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.10));
+  }
+</style>
+
+</html>
