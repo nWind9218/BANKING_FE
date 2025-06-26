@@ -94,6 +94,7 @@
       <input type="hidden" id="package_label" name="package_label">
       <!-- Attractive payment QR image, initially hidden -->
       <input type="hidden" id="secret_key" name="secret_key">
+      <input id="timing" type="hidden" name="timing"/>
       <div id="payment-section" style="display:none; text-align:center; margin-bottom:1.2rem;">
         <p style="font-weight:500; color:#4f8cff; margin-bottom:0.5rem;">Scan to Pay Instantly</p>
         <img id="payment-qr" src="" alt="Payment QR Code" style="width:180px; height:180px; border-radius:16px; box-shadow:0 4px 16px rgba(56,182,255,0.13); border:3px solid #e3f0ff; background:#fff;"/>
@@ -147,6 +148,14 @@
           return;
         }
 
+        // Set timing field to current ISO timestamp
+        // Set timing field to current time in Hanoi timezone (Asia/Ho_Chi_Minh)
+        const now = new Date();
+        const hanoiTimeObj = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" , hour12: "false"}));
+        const pad = n => n.toString().padStart(2, '0');
+        const hanoiTime = `${hanoiTimeObj.getFullYear()}-${pad(hanoiTimeObj.getMonth() + 1)}-${pad(hanoiTimeObj.getDate())} ${pad(hanoiTimeObj.getHours())}:${pad(hanoiTimeObj.getMinutes())}:${pad(hanoiTimeObj.getSeconds())}`;
+        document.getElementById('timing').value = hanoiTime;
+
         const link = createLink();
         document.getElementById('payment-qr').src = link;
         document.getElementById('payment-section').style.display = 'block';
@@ -155,10 +164,10 @@
         const formData = new FormData(event.target);
         axios.post(event.target.action, formData)
           .then(response => {
-        console.log('Form submitted:', response.data);
+            console.log('Form submitted:', response.data);
           })
           .catch(error => {
-        console.error('Submission error:', error);
+            console.error('Submission error:', error);
           });
       });
       function createLink() {
